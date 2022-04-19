@@ -1,0 +1,335 @@
+\documentclass{beamer}
+\mode<presentation>
+
+
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+ 
+
+
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+
+
+\usepackage{ae}
+\usepackage{graphicx,color}
+\usepackage[all]{xy}
+\usepackage{empheq}
+\usepackage{fancybox}
+\usepackage{textcomp}
+\usepackage[all]{xy}
+\usepackage{textpos}
+\usepackage{multicol}
+\usepackage{cancel}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{enumerate}
+\usepackage{minted}
+
+\usepackage[style=verbose]{biblatex}
+\addbibresource{bibtex.bib}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.geometric, arrows}
+\usepackage{tkz-graph}
+\GraphInit[vstyle = Shade]
+\tikzset{
+  LabelStyle/.style = { rectangle, rounded corners, draw,
+                        minimum width = 2em, fill = yellow!50,
+                        text = red, font = \bfseries },
+  VertexStyle/.append style = { inner sep=5pt,
+                                font = \Large\bfseries},
+  EdgeStyle/.append style = {->, bend left} }
+\thispagestyle{empty}
+
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum 
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\newcommand{\floor}[1]{$\lfloor$ #1 $\rfloor$}
+
+\newcommand\Fontvi{\fontsize{9}{7.2}\selectfont}
+
+
+
+\usetheme{Boadilla}
+
+\newcommand{\PC}[1]{\ensuremath{\left(#1\right)}}
+
+
+\newcommand*{\colorboxed}{}
+\def\colorboxed#1#{%
+  \colorboxedAux{#1}%
+}
+\newcommand*{\colorboxedAux}[3]{%
+  % #1: optional argument for color model
+  % #2: color specification
+  % #3: formula
+  \begingroup
+    \colorlet{cb@saved}{.}%
+    \color#1{#2}%
+    \boxed{%
+      \color{cb@saved}%
+      #3%
+    }%
+  \endgroup
+}
+
+
+
+\title {Pensando Computacionalmente}
+
+\author[Wladimir Araújo Tavares]{ Wladimir Araújo Tavares$^{1}$  }
+
+\institute[UFC]{$^{1}$Universidade Federal do Ceará - Campus de Quixadá\\}
+\date{}
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>{}
+    \small
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+\begin{document}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{frame}{Grafo}
+
+\begin{itemize}
+\item \textbf{Objetivos:} Desenvolver o pensamento computacional.
+
+\item \textbf{Público-alvo:}  Alunos a partir do primeiro ano do Ensino Médio.
+
+\item \textbf{Conteúdo:} Grafo
+
+\item \textbf{Tempo:} 50 minutos
+
+\item \textbf{Recursos:} Papel, Caneta.
+
+\end{itemize}
+    
+\end{frame}
+
+
+\begin{frame}{Passo 1 - Apresentação da Atividade}
+
+\begin{itemize}
+   
+\item <1-> Um grafo G é uma estrutura matemática definida por dois conjuntos: um conjunto de vértices denotado por $V$ e um conjunto de arestas denotado por $E$. Geralmente, representamos um grafo como G=(V,E).
+
+
+\item Os grafos podem ser utilizados para representar uma relação entre os objetos. 
+
+\item Neste caso, os vértices representam os objetos e as arestas representam uma relação entre os objetos. 
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Passo 1 - Apresentação da Atividade}
+
+Considere a seguinte situação:
+
+\begin{itemize}
+   
+\item <1-> A distribuição de energia para as diversas regiões do país exige um investimento muito grande em linhas de transmissão e estações transformadoras. 
+
+\item <2->Uma linha de transmissão interliga duas estações transformadoras. Uma estação transformadora pode estar interligada a uma ou mais outras estações transformadoras, mas devido ao alto custo não pode haver mais de uma linha de transmissão interligando duas estações.
+
+\item <3->As estações transformadoras são interconectadas de forma a garantir que a energia possa ser distribuída entre qualquer par de estações. Uma rota de energia entre duas estações $e1$ e $ek$ é deﬁnida como uma sequência $(e_1 , l_1 , e_2 , l_2 , \ldots , e_{k-1} , l_{k-1} , e_k )$ onde cada ei é uma estação transformadora e cada $l_i$ é uma linha de transmissão que conecta $e_i$ e $e_{i+1}$.
+
+
+
+
+\end{itemize}
+
+
+
+\end{frame}
+
+
+\begin{frame}{Passo 1 - Apresentação da Atividade}
+
+\begin{itemize}
+   
+\item <1-> Os engenheiros de manutenção do sistema de transmissão de energia consideram que o sistema está em estado normal se há pelo menos uma rota entre qualquer par de estações, e em estado de falha caso contrário.
+
+\item <2-> Um grande tornado passou pelo país daniﬁcando algumas das linhas de transmissão, e os engenheiros de manutenção do sistema de transmissão de energia necessitam de sua ajuda.
+
+
+\end{itemize}
+
+
+\end{frame}
+
+
+\begin{frame}{Passo 1 - Apresentação da Atividade}
+
+
+\begin{itemize}
+   
+\item <1-> No exemplo acima, os vértices representam as estações de energia e as arestas representam as linhas de transmissão de energia.
+
+
+\end{itemize}
+
+
+
+\end{frame}
+
+
+\begin{frame}{Passo 1 - Apresentação da Atividade}
+
+
+\begin{itemize}
+   
+\item <1-> Considere o seguinte exemplo com 6 estações de energia $\{e_1,e_2,e_3,e_4,e_5, e_6\}$ e 7 linhas de transmissão $\{ e_1 \leftrightarrow e_2 ,e_1 \leftrightarrow e_5, e_2 \leftrightarrow e_3, e_3 \leftrightarrow e_4, e_4 \leftrightarrow e_5, e_5 \leftrightarrow e_6, e_6 \leftrightarrow e_2\}$:
+
+
+\begin{tikzpicture}[main/.style = {draw, circle}] 
+
+\node[main] (1) at (0,0) {$e_1$};
+\node[main] (2) at (-1,-1) {$e_2$};
+\node[main] (5) at (1,-1) {$e_5$};
+\node[main] (3) at (-1,-2.5) {$e_3$};
+\node[main] (4) at (1,-2.5) {$e_4$};
+\node[main] (6) at (0,-3.5) {$e_6$};
+
+
+\draw (1) -- (2);
+\draw (1) -- (5);
+\draw (2) -- (3);
+\draw (3) -- (4);
+\draw (4) -- (5);
+\draw (5) -- (6);
+\draw (6) -- (2);
+
+
+
+
+
+
+
+
+\end{tikzpicture} 
+
+
+\item <2-> Perceba que este sistema está normal, podemos encontrar uma rota entre qualquer par de estações.
+
+
+\end{itemize}
+
+
+
+\end{frame}
+
+
+\begin{frame}{Passo 1 - Apresentação da Atividade}
+
+
+\begin{itemize}
+   
+\item <1-> Considere o seguinte exemplo com 6 estações de energia $\{e_1,e_2,e_3,e_4,e_5, e_6\}$ e 7 linhas de transmissão $\{ e_1 \leftrightarrow e_2 ,e_1 \leftrightarrow e_5, e_2 \leftrightarrow e_3, e_3 \leftrightarrow e_4, e_4 \leftrightarrow e_5\}$:
+
+
+\begin{tikzpicture}[main/.style = {draw, circle}] 
+
+\node[main] (1) at (0,0) {$e_1$};
+\node[main] (2) at (-1,-1) {$e_2$};
+\node[main] (5) at (1,-1) {$e_5$};
+\node[main] (3) at (-1,-2.5) {$e_3$};
+\node[main] (4) at (1,-2.5) {$e_4$};
+\node[main] (6) at (0,-3.5) {$e_6$};
+
+
+\draw (1) -- (2);
+\draw (1) -- (5);
+\draw (2) -- (3);
+\draw (3) -- (4);
+\draw (4) -- (5);
+
+
+
+
+
+
+
+
+\end{tikzpicture} 
+
+
+\item <2-> Perceba que este sistema está estado de falha. Por exemplo,  não conseguimos encontrar uma rota interligando as estações $e_1$ e $e_6$.
+
+
+\end{itemize}
+
+
+
+\end{frame}
+
+
+\begin{frame}{Passo 1 - Execução da atividade}
+
+
+\begin{itemize}
+   
+\item <1-> A sala de aula pode ser dividida em equipes. 
+
+\item <2-> No modo batalha, teremos o duelo entre duas equipes. 
+
+\item <3-> A equipe 1 deve desenhar um diagrama de uma rede de transmissão com até 10 estações que deverá ser mantido em segredo.
+
+\item <4-> A equipe2 deve descobrir se a rede de transmissão desenhada pela equipe1 está normal ou em estado de falha. 
+
+\item <5-> A equipe2 pode realizar perguntas do tipo:
+"Quais são as estações interligadas com a estação i?".
+
+\item <6-> A equipe2 deve descobrir a condição da rede de transmissão realizando o número mínimo de perguntas.
+
+
+\end{itemize}
+
+
+
+\end{frame}
+
+
+\begin{frame}{Passo 3 - Discussão e Avaliação}
+
+\begin{itemize}
+
+\item<1-> Os alunos são incentivados a escrever sobre as dificuldades para realizar o procedimento.
+
+\item<2-> Os seguintes questionamentos podem ser feitos:
+
+\begin{itemize}
+    \item Quando podemos parar de fazer perguntas?
+    \item Existe uma quantidade mínima de perguntas?
+    \item A quantidade de perguntas está relacionada com a quantidade de linhas de transmissões ou com a quantidade de estações de energia?
+\end{itemize}
+
+
+\end{itemize}
+
+
+\end{frame}
+
+
+
+
+
+\end{document}

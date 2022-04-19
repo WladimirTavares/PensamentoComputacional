@@ -1,0 +1,408 @@
+\documentclass{beamer}
+\mode<presentation>
+
+
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+ 
+
+
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+
+
+\usepackage{ae}
+\usepackage{graphicx,color}
+\usepackage[all]{xy}
+\usepackage{empheq}
+\usepackage{fancybox}
+\usepackage{textcomp}
+\usepackage[all]{xy}
+\usepackage{textpos}
+\usepackage{multicol}
+\usepackage{cancel}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{enumerate}
+\usepackage{minted}
+
+\usepackage[style=verbose]{biblatex}
+\addbibresource{bibtex.bib}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+
+
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum 
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+\newcommand{\floor}[1]{$\lfloor$ #1 $\rfloor$}
+
+\newcommand\Fontvi{\fontsize{9}{7.2}\selectfont}
+
+
+
+\usetheme{Boadilla}
+
+\newcommand{\PC}[1]{\ensuremath{\left(#1\right)}}
+
+
+\newcommand*{\colorboxed}{}
+\def\colorboxed#1#{%
+  \colorboxedAux{#1}%
+}
+\newcommand*{\colorboxedAux}[3]{%
+  % #1: optional argument for color model
+  % #2: color specification
+  % #3: formula
+  \begingroup
+    \colorlet{cb@saved}{.}%
+    \color#1{#2}%
+    \boxed{%
+      \color{cb@saved}%
+      #3%
+    }%
+  \endgroup
+}
+
+
+
+\title {Pensando Computacionalmente}
+
+\author[Wladimir Araújo Tavares]{ Wladimir Araújo Tavares$^{1}$  }
+
+\institute[UFC]{$^{1}$Universidade Federal do Ceará - Campus de Quixadá\\}
+\date{}
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>{}
+    \small
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+\begin{document}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{frame}{Somando números}
+
+\begin{itemize}
+\item \textbf{Objetivos:} Desenvolver o pensamento computacional.
+
+\item \textbf{Público-alvo:}  Alunos a partir do primeiro ano do Ensino Médio.
+
+\item \textbf{Conteúdo:} Variável e comando de repetição
+
+\item \textbf{Tempo:} 50 minutos
+
+\item \textbf{Recursos:} Papel, Caneta e Calculadora.
+
+\end{itemize}
+    
+\end{frame}
+
+
+\begin{frame}{Passo 1 - Apresentação da Atividade}
+
+\begin{itemize}
+   
+\item <1->Nesta atividade, um conjunto de 5 cartões numerados e um cartão identificado com a letra S. Cada um dos cartões numerados tem  um número escrito no outro lado. 
+
+\begin{center}
+\begin{tikzpicture}
+\node[rectangle, draw] (problema) at (0,0){1};
+\node[rectangle, draw] (candidato) at (2,0) {2};
+\node[rectangle, draw] (teste) at (4,0) {3};
+\node[rectangle, draw] (teste) at (6,0) {4};
+\node[rectangle, draw] (teste) at (8,0) {5};
+\node[rectangle, draw] (teste) at (10,0) {S};
+\end{tikzpicture}
+\end{center}
+
+
+\item <2->A tarefa é escrever a soma dos números escritos nos cartões numerados usando a seguinte instrução:
+
+\begin{itemize}
+    \item Escreva o valor 0 no cartão S.
+    \item Escreva o valor do cartão $i$ no cartão S para $1 \leq i \leq 5$.
+    \item Adicione o valor do cartão $i$ no cartão S para $1 \leq i \leq 5$.
+\end{itemize}
+
+
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Passo 2 - Execução da atividade}
+
+Um dos algoritmos possíveis é o seguinte:
+
+\begin{enumerate}
+    \item <1->Escreva o valor 0 no cartão S.
+    \item <2->Adicione o valor do cartão 1 no cartão S.
+    \item <3->Adicione o valor do cartão 2 no cartão S.
+    \item <4->Adicione o valor do cartão 3 no cartão S.
+    \item <5->Adicione o valor do cartão 4 no cartão S.
+    \item <6->Adicione o valor do cartão 5 no cartão S.
+\end{enumerate}
+
+
+\end{frame}
+
+
+\begin{frame}{Passo 3 - Execução da atividade}
+
+
+
+\begin{enumerate}
+    \item <1->Escreva o valor do cartão 1 no cartão S.
+    \item <2->Adicione o valor do cartão 2 no cartão S.
+    \item <3->Adicione o valor do cartão 3 no cartão S.
+    \item <4->Adicione o valor do cartão 4 no cartão S.
+    \item <5->Adicione o valor do cartão 5 no cartão S.
+\end{enumerate}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}{Passo 3 - Estendendo a atividade}
+
+\begin{itemize}
+
+\item <1->Agora, considere um conjunto de 5 cartões numerados e um cartão identificado com a letra S e outro com a letra I. Cada um dos cartões numerados tem  um número escrito no outro lado. 
+
+\begin{center}
+\begin{tikzpicture}
+\node[rectangle, draw] (problema) at (0,0){1};
+\node[rectangle, draw] (candidato) at (1,0) {2};
+\node[rectangle, draw] (teste) at (2,0) {3};
+\node[rectangle, draw] (teste) at (3,0) {4};
+\node[rectangle, draw] (teste) at (4,0) {5};
+\node[rectangle, draw] (teste) at (5,0) {S};
+\node[rectangle, draw] (teste) at (6,0) {I};
+
+\end{tikzpicture}
+\end{center}
+
+\item <2->A tarefa é escrever a soma dos números escritos nos cartões numerados usando a seguinte instrução:
+
+\begin{enumerate}
+    \item <3->Escreva 5 no cartão I. 
+    \item <4->Escreva 0 no cartão S.
+    \item <5->Decrementa em uma unidade o valor do cartão I.
+    \item <6->Escreva o valor do cartão indicado pelo cartão I no cartão S.
+    \item <7->Adicione o valor do cartão indicado pelo cartão I no cartão S.
+    \item <8->Se o valor do cartão indicado pelo cartão I for diferente de zero volte para o Passo K.
+    \item <9->Mostre o valor do cartão S
+    \item <10>Mostre o valor do cartão I
+\end{enumerate}
+
+
+\end{itemize}
+
+
+\end{frame}
+
+\begin{frame}{Passo 3 - Exemplo de Algoritmo}
+
+Exemplo de um algoritmo:
+
+\begin{enumerate}
+    \item <1->Escreva 5 no cartão I 
+    \item <2->Mostre I
+    \item <3->Decrementa em uma unidade o valor do cartão I
+    \item <4->Se o valor do cartão indicado pelo cartão I for diferente de zero volte para o Passo 2
+\end{enumerate}
+
+O algoritmo acima realiza as seguintes instruções:
+
+\begin{enumerate}
+    \item <5->Mostre 5
+    \item <6->Mostre 4
+    \item <7->Mostre 3
+    \item <8->Mostre 2
+    \item <9->Mostre 1
+\end{enumerate}
+
+
+
+
+
+
+\end{frame}
+
+
+\begin{frame}{Passo 4 - Execução}
+
+\begin{itemize}
+    \item Os alunos devem modificar o algoritmo exemplo para calcular a soma dos valores nos cartões identificados de 1 até 5.
+\end{itemize}
+
+
+
+
+\end{frame}
+
+
+
+\begin{frame}{Passo 5 - Discussão e Avaliação}
+
+\begin{itemize}
+
+\item<1-> Os alunos são incentivados a escrever sobre o que eles aprenderam com essa atividade.
+
+\item<2-> O professor pode avaliar a participação do alunos em todos os passos da atividade.
+
+\end{itemize}
+
+
+\end{frame}
+% \section{Encontrando o maior}
+
+% \begin{frame}{Tarefa}
+
+% \begin{itemize}
+
+% \item Dado um conjunto de valores, encontre o maior dos valores.
+
+% \begin{center}
+% \begin{tabular}{|c|c|c|c|c|}
+% \hline
+% 10    &  15 & 30 & 42 & 14 \\
+% \hline
+% \end{tabular}
+% \end{center}
+
+% \item Você pode dizer que esse problema é muito fácil e a resposta claramente é 42. 
+
+% \item Como você resolveria esse problema com os olhos fechados e podendo fazer perguntas simples para uma outra pessoa.
+
+% \end{itemize}
+
+
+% \end{frame}
+
+
+
+% \begin{frame}{Decomposição}
+
+% \begin{itemize}
+
+% \item Sabemos que a resposta é o elemento que é maior que todos os outros.
+
+% \item Nesse problema, precisaremos guardar uma informação que chamaremos de candidato, utilizaremos o candidato para comparar com cada um dos valores do nosso conjunto.
+
+% \item Possivelmente, esse candidato pode ser desbancado por um dos valores do nosso conjunto e terá que ser atualizado.
+
+
+% \end{itemize}
+
+
+% \end{frame}
+
+
+% \begin{frame}{Decomposição}
+
+
+% \begin{tikzpicture}
+% \node[rectangle, draw] (problema) at (0,0){Encontrar o maior elemento do conjunto};
+% \node[rectangle, draw] (candidato) at (0,-1) {Selecionar um 
+% candidato inicial};
+% \node[rectangle, draw] (teste) at (1,-3) {Testar se o elemento $i$ desbanca o candidato e atualizar o candidato}; 
+% \draw[->]  (problema) -- (candidato);
+% \draw[->]  (problema) -- (teste);
+
+% \end{tikzpicture}
+
+
+
+% \end{frame}
+
+
+% \begin{frame}{Reconhecimento de Padrões}
+
+
+% \begin{itemize}
+%     \item O subproblema de testar se um elemento desbanca o candidato atual e atualiza o candidato atual é o mesmo subproblema para todos os elementos do conjunto.
+%     \item O que pode mudar entre os testes para cada elemento é que o candidato pode ter sido atualizado.
+% \end{itemize}
+
+
+% \end{frame}
+
+
+% \begin{frame}{Abstração}
+
+
+% \begin{itemize}
+%     \item Os valores podem ser armazenados em um vetor e podem ser acessados por um índice começado por 1 até o tamanho do conjunto.
+%     \item Para realizar o teste e atualização, precisamos acessar o elemento a ser testado e do candidato atual.
+% \end{itemize}
+
+
+% \end{frame}
+
+% \begin{frame}{Algoritmo em pseudocódigo}
+
+
+% \begin{algorithm}[H]
+% \caption{maior\_elemento(A)}
+% \begin{algorithmic}
+% \Require o tamanho do vetor A deve ser maior que 1.
+% \Ensure Devolve o maior elemento do vetor
+
+% \State $candidato \gets A[1]$
+% \State $n \gets tamanho(A)$
+
+% \For{$i \gets 1$ \textbf{até} $n$}
+
+% \If{A[i] > candidato}
+% \State $candidato \gets A[i]$
+% \EndIf
+
+% \EndFor
+
+% \State \Return A[i]
+
+% \end{algorithmic}
+% \end{algorithm}
+
+% \end{frame}
+
+% \begin{frame}[fragile]{Algoritmo utilizando a linguagem Python}
+
+% \begin{minted}{Python}[H]
+% def maior_elemento(A):
+% 	candidato = A[0]
+% 	n = len(A)
+% 	for i in range(n):
+% 		if A[i] > candidato:
+% 			candidato = A[i]
+% 	return candidato
+% if __name__ == "__main__":
+% 	print( maior_elemento([4,10,42,15,30]))	
+
+% \end{minted}
+
+% \end{frame}
+
+
+
+\end{document}
